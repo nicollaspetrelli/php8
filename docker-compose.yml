@@ -19,9 +19,9 @@ services:
   
     webserver:
       image: nginx:alpine
-      working_dir: /app
+      working_dir: /var/www
       volumes:
-          - .:/app
+          - .:/var/www
           - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
        - 8000:8000
@@ -30,9 +30,14 @@ services:
 
     php:
       build: docker/php
-      working_dir: /app
+      working_dir: /var/www
       volumes:
-        - .:/app
+        - .:/var/www
+        - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      extra_hosts:
+        - host.docker.internal:host-gateway
+      expose:
+        - 9003
       networks:
         projectname:
 
