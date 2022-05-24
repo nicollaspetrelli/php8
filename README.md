@@ -1,9 +1,9 @@
 ## PHP Docker Start
 A repository to clone and start your php, laravel or lumem projects in docker!
-Configured by a docker-compose file with everthing you need to start a PHP 8 project!
+Configured by a docker-compose file with everthing you need to start a PHP 8.1 project!
 
 ### Containers
- - PHP 8.0.12 FPM
+ - PHP 8.1.6 FPM
  - MySQL
  - Nginx
 

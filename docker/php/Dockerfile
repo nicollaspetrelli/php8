@@ -1,11 +1,11 @@
-FROM php:8.0.12-fpm
+FROM php:8.1-fpm
 WORKDIR "/app"
 
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Args
-ARG XDEBUG_ENABLED=true
+ARG INSTALL_XDEBUG=true
 
 # Install PHP extensions
 RUN buildDeps="libpq-dev libzip-dev libicu-dev libpng-dev libjpeg-dev libfreetype6-dev libmagickwand-dev libxslt-dev apt-utils locales" && \
@@ -27,7 +27,7 @@ RUN echo 'pt_BR.UTF-8 UTF-8' >> /etc/locale.gen && \
     locale-gen
 
 # Install Xdebug
-RUN if [ ${XDEBUG_ENABLED} = true ]; then \
+RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     yes | pecl install xdebug \
     && docker-php-ext-enable xdebug \
     ;fi
