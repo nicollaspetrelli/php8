@@ -21,13 +21,18 @@ VSCode config extension to use remote xDebug
 
 ```json
 {
-    "name": "Docker Xdebug",
+    "name": "Listen for XDebug",
     "type": "php",
     "request": "launch",
     "port": 9003,
+    "log": true,
+    "externalConsole": false,
     "pathMappings": {
-        "/var/www": "${workspaceRoot}" 
+        "/var/www" : "${workspaceRoot}",
     },
+    "ignore": [
+        "**/vendor/**/*.php"
+    ]
 },
 ```
 
